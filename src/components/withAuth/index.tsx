@@ -26,12 +26,11 @@ const withAuth = (Component: ComponentType): FC => {
   const Authenticated: FC = (): JSX.Element | null => {
     const navigate = useNavigate();
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-    // const { sub }: Token = jwt_decode(storage.getToken());
-    const sub = "1";
+    const token = storage.getToken();
 
-    async function authenticateUser(): Promise<void> {
+    async function authenticateUser(id: string): Promise<void> {
       try {
-        await getCurrentUser(sub);
+        await getCurrentUser(id);
         setIsAuthenticated(true);
       } catch (err) {
         navigate("/auth/login");
@@ -40,8 +39,13 @@ const withAuth = (Component: ComponentType): FC => {
     }
 
     useEffect(() => {
-      authenticateUser();
-    }, [isAuthenticated]);
+      if (token) {
+        const { sub }: Token = jwt_decode(token);
+        authenticateUser(sub);
+      } else {
+        navigate("/auth/login");
+      }
+    }, []);
 
     return isAuthenticated ? <Component /> : null;
   };

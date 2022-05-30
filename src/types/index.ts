@@ -1,5 +1,5 @@
 export type LoginResponse = {
-  jwt: string;
+  accessToken: string;
   user: AuthUser;
 };
 

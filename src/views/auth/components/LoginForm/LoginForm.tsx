@@ -22,7 +22,7 @@ export function LoginForm(): JSX.Element {
     try {
       const data = await login({ email, password });
       setUser(data.user.name);
-      storage.setToken(data.jwt);
+      storage.setToken(data.accessToken);
 
       navigate("/home");
     } catch (err) {
