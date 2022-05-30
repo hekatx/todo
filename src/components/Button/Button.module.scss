@@ -1,0 +1,20 @@
+@use '@/styles/config/colors';
+
+.button {
+  font-size: 1rem;
+  transition: all .5s ease;
+  color: #001F3F;
+  border: 1px solid grey;
+  text-align: center;
+  line-height: 1;
+  background-color : transparent;
+  padding: 10px;
+  outline: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover {
+    color: #fff;
+    background-color: colors.$blue;
+}

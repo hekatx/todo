@@ -1,5 +1,7 @@
-import Axios, { AxiosRequestConfig } from "axios";
-import { API_URL } from "@/config";
+import Axios, { AxiosRequestConfig, AxiosResponse } from "axios";
+// import { API_URL } from "@/config";
+
+const API_URL = "http://localhost:5432";
 
 function getAccessToken(): string {
   return localStorage.getItem("accessToken") || "";
@@ -23,7 +25,9 @@ function requestInterceptor(config: AxiosRequestConfig): AxiosRequestConfig {
   return config;
 }
 
-// Could add an reponse interceptor but thats up to the team
-// function responseInterceptor(response) {}
+function responseInterceptor(response: AxiosResponse) {
+  return response.data;
+}
 
 axios.interceptors.request.use(requestInterceptor);
+axios.interceptors.response.use(responseInterceptor);

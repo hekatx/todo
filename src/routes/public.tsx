@@ -1,10 +1,10 @@
 import { AuthRoutes } from "@/views/auth";
-import Landing from "@/views/landing";
+import Home from "@/views/home/components/Home";
 
 const publicRoutes = [
   {
-    path: "/",
-    element: <Landing />,
+    path: "/home",
+    element: <Home />,
   },
   {
     path: "/auth/*",

@@ -1,0 +1,38 @@
+@use "@/styles/config/colors";
+@use "@/styles/config/fonts";
+
+.wrapper {
+  position: relative;
+  margin: 1rem;
+}
+
+.input {
+  outline: none;
+  border:1px solid #bbb;
+  padding:10px 20px; 
+  border-radius: 20px;
+  transition: border 100ms ease;
+  width: 90%;
+
+  &:focus {
+    border:1px solid colors.$accent;
+  }
+
+  &:not(:placeholder-shown), &:focus{
+    & + .label {
+      transform:translateY(-20px);
+      font-size: fonts.$label;
+    }
+  }
+}
+
+.label {
+  position: absolute;
+  top: 0.4rem;
+  left: 12%;
+  padding: 0.2rem;
+  background: white;
+  transition: transform 100ms ease, font-size 100ms ease;
+}
+
+

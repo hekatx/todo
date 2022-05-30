@@ -1,14 +1,16 @@
 import { BrowserRouter as Router } from "react-router-dom";
-import './App.css'
+import "./styles/global.scss";
 import AppRoutes from "./routes";
+import UserContextProvider from "./providers/user";
 
-function App() {
-
+function App(): JSX.Element {
   return (
-    <Router>
-      <AppRoutes />
-    </Router>
-  )
+    <UserContextProvider>
+      <Router>
+        <AppRoutes />
+      </Router>
+    </UserContextProvider>
+  );
 }
 
-export default App
+export default App;
