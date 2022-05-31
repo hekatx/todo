@@ -1,4 +1,4 @@
-import { AuthUser } from "@/types";
+import { User } from "@/types";
 import { createContext, Dispatch, SetStateAction, useState } from "react";
 
 interface Props {
@@ -6,14 +6,14 @@ interface Props {
 }
 
 interface ContextValue {
-  user: string;
-  setUser: Dispatch<SetStateAction<string>>;
+  user: User;
+  setUser: Dispatch<SetStateAction<User>>;
 }
 
 export const UserContext = createContext({} as ContextValue);
 
 const UserContextProvider = (props: Props) => {
-  const [user, setUser] = useState<string>("");
+  const [user, setUser] = useState<User>({} as User);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>

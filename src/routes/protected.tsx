@@ -1,4 +1,4 @@
-import Home from "@/views/home/components/Home";
+import { Home } from "@/views/home/components/Home";
 
 const protectedRoutes = [
   {

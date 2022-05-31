@@ -1,13 +1,10 @@
 import { TextInput } from "@/components/TextInput/TextInput";
 import { Button } from "@/components/Button";
 import { login } from "../../api";
-import { UserContext } from "@/providers/user";
-import { useContext } from "react";
 import { storage } from "@/utils";
 import { useNavigate } from "react-router-dom";
 
 export function LoginForm(): JSX.Element {
-  const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   async function onSubmit(e: React.SyntheticEvent): Promise<void> {
@@ -20,9 +17,8 @@ export function LoginForm(): JSX.Element {
     const password = target.password.value;
 
     try {
-      const data = await login({ email, password });
-      setUser(data.user.name);
-      storage.setToken(data.accessToken);
+      const { accessToken } = await login({ email, password });
+      storage.setToken(accessToken);
 
       navigate("/");
     } catch (err) {
