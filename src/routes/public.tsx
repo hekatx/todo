@@ -1,11 +1,7 @@
 import { AuthRoutes } from "@/views/auth";
-import Home from "@/views/home/components/Home";
+import { Navigate } from "react-router-dom";
 
 const publicRoutes = [
-  {
-    path: "/home",
-    element: <Home />,
-  },
   {
     path: "/auth/*",
     element: <AuthRoutes />,

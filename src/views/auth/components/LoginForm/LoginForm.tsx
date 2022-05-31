@@ -24,7 +24,7 @@ export function LoginForm(): JSX.Element {
       setUser(data.user.name);
       storage.setToken(data.accessToken);
 
-      navigate("/home");
+      navigate("/");
     } catch (err) {
       console.error(err);
     }

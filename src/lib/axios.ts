@@ -4,7 +4,7 @@ import Axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 const API_URL = "http://localhost:5432";
 
 function getAccessToken(): string {
-  return localStorage.getItem("accessToken") || "";
+  return localStorage.getItem("todo_react_token") || "";
 }
 
 export const axios = Axios.create({
@@ -12,7 +12,7 @@ export const axios = Axios.create({
 });
 
 function requestInterceptor(config: AxiosRequestConfig): AxiosRequestConfig {
-  const token: string = getAccessToken();
+  const token: string = JSON.parse(getAccessToken());
   if (!config) {
     config = {};
   }
