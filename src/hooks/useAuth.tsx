@@ -34,8 +34,6 @@ function useAuth(): boolean {
     }
   }, []);
 
-  console.log("whatishappeninglol", isAuthenticated);
-
   return isAuthenticated;
 }
 
