@@ -14,8 +14,6 @@ export type Todo = {
   userId: number;
   title: string;
   content: string;
-  done: boolean;
-  tags: string[];
 };
 
 export type User = {

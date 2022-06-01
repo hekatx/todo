@@ -1,9 +1,8 @@
 import { BaseLayout } from "@/components/BaseLayout";
 import withAuth from "@/components/withAuth";
 import { UserContext } from "@/providers/user";
-import { Todo } from "@/types";
-import { useContext, useEffect, useState } from "react";
-import { getUserTodos } from "../../api";
+import { useContext, useEffect } from "react";
+import useTodos from "../../hooks/useTodos";
 import { AddTodo } from "../AddTodo";
 import { TodoList } from "../TodoList";
 import styles from "./Home.module.scss";
@@ -23,29 +22,18 @@ function TodoMessage({ numberOfTodos }: TodoMessageProps): JSX.Element {
 }
 
 export const Home = withAuth(function (): JSX.Element {
-  const [todos, setTodos] = useState<Todo[]>([] as Todo[]);
   const { user } = useContext(UserContext);
-
-  async function fetchTodos(id: number): Promise<void> {
-    try {
-      const userTodos: Todo[] = await getUserTodos(id);
-      setTodos(userTodos);
-    } catch (err) {
-      console.error(err);
-    }
-  }
-
-  useEffect(() => {
-    fetchTodos(user.id);
-  }, []);
+  const { todos, setTodos } = useTodos(user.id);
 
   return (
     <BaseLayout>
       <div className={styles.container}>
-        <h1>Bienvenido, {user.name}!</h1>
-        <TodoMessage numberOfTodos={todos.length} />
-        <AddTodo />
-        <TodoList todos={todos} />
+        <div className={styles.text__container}>
+          <h1>Bienvenido, {user.name}!</h1>
+          <TodoMessage numberOfTodos={todos.length} />
+        </div>
+        <AddTodo todos={todos} setTodos={setTodos} />
+        <TodoList todos={todos} setTodos={setTodos} />
       </div>
     </BaseLayout>
   );
