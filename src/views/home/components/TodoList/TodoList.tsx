@@ -28,8 +28,7 @@ export function TodoList({ todos, setTodos }: Props): JSX.Element {
       const editedTodoIndex = todosCopy.findIndex(
         (todo) => todo.id === editedTodo.id
       );
-      let c = todosCopy[editedTodoIndex].content;
-      todosCopy[editedTodoIndex] = { ...editedTodo, content: c + "AHAHA" };
+      todosCopy[editedTodoIndex] = editedTodo;
       setTodos(todosCopy);
     } catch (err) {
       console.error(err);

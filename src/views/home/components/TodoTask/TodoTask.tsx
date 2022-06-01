@@ -7,10 +7,6 @@ import { UserContext } from "@/providers/user";
 import { TextArea } from "@/components/TextArea";
 import { Button } from "@/components/Button";
 
-interface Props {
-  todo: Todo;
-}
-
 export function TodoTask({ todo, del, edit }: any): JSX.Element {
   const [isEditing, setIsEditing] = useState(false);
   const [title, setTitle] = useState(todo.title);
@@ -24,6 +20,7 @@ export function TodoTask({ todo, del, edit }: any): JSX.Element {
         onChangeHandler={(_) => {
           del(todo.id);
         }}
+        style={{ flexGrow: 1 }}
       />
       <div className={styles.content__container}>
         {isEditing ? (
@@ -44,7 +41,7 @@ export function TodoTask({ todo, del, edit }: any): JSX.Element {
             />
             <Button
               onClick={() => {
-                edit(user.id, { ...todo, title, content });
+                edit({ ...todo, title, content });
                 setIsEditing(false);
               }}
             >
