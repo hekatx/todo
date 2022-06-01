@@ -1,26 +1,24 @@
 import Axios, { AxiosRequestConfig, AxiosResponse } from "axios";
-// import { API_URL } from "@/config";
-
-const API_URL = "http://localhost:5432";
-
-function getAccessToken(): string {
-  return localStorage.getItem("todo_react_token") || "";
-}
+import { API_URL } from "@/config";
+import { storage } from "@/utils";
 
 export const axios = Axios.create({
   baseURL: API_URL,
 });
 
 function requestInterceptor(config: AxiosRequestConfig): AxiosRequestConfig {
-  const token: string = JSON.parse(getAccessToken());
-  if (!config) {
-    config = {};
-  }
-  if (!config.headers) {
-    config.headers = {};
-  }
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
+  const tokenString = storage.getToken();
+  if (tokenString) {
+    const token: string = JSON.parse(tokenString);
+    if (!config) {
+      config = {};
+    }
+    if (!config.headers) {
+      config.headers = {};
+    }
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
   }
   return config;
 }

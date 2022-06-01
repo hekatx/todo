@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server": "json-server -p 5432 --watch db.json -m ./node_modules/json-server-auth -r routes.json"
   },
   "dependencies": {
     "react": "^18.0.0",

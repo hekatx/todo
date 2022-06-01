@@ -2,7 +2,6 @@ import { Button } from "@/components/Button";
 import { TextArea } from "@/components/TextArea";
 import { axios } from "@/lib/axios";
 import { Todo } from "@/types";
-import { AxiosResponse } from "axios";
 import { ChangeEvent, Dispatch, SetStateAction, useState } from "react";
 import styles from "./AddTodo.module.scss";
 
@@ -11,7 +10,7 @@ interface Props {
   setTodos: Dispatch<SetStateAction<Todo[]>>;
 }
 
-export function AddTodo({ setTodos, todos }: Props): JSX.Element {
+export function AddTodo({ setTodos }: Props): JSX.Element {
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
 
