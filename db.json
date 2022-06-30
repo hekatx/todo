@@ -7,30 +7,5 @@
       "id": 1
     }
   ],
-  "todos": [
-    {
-      "title": "testing stuff",
-      "content": "toooodoooo",
-      "userId": 1,
-      "id": 1
-    },
-    {
-      "title": "test",
-      "content": "ttttt",
-      "userId": 1,
-      "id": 2
-    },
-    {
-      "title": "random",
-      "content": "randoooom",
-      "userId": 1,
-      "id": 3
-    },
-    {
-      "title": "new test",
-      "content": "ssss",
-      "userId": 1,
-      "id": 4
-    }
-  ]
+  "todos": []
 }

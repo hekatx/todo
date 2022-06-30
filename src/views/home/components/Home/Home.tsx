@@ -21,7 +21,7 @@ function TodoMessage({ numberOfTodos }: TodoMessageProps): JSX.Element {
   return <p>No hay tareas para los próximos días</p>;
 }
 
-export const Home = withAuth(function (): JSX.Element {
+export const Home = function (): JSX.Element {
   const { user } = useContext(UserContext);
   const { todos, setTodos } = useTodos(user.id);
 
@@ -37,4 +37,4 @@ export const Home = withAuth(function (): JSX.Element {
       </div>
     </BaseLayout>
   );
-});
+};
